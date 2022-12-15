@@ -17,6 +17,11 @@ public class FareCalculatorService {
 
         double nbHours =((double) (outTime - inTime)) / 60 / 60;
 
+        if (nbHours < 0.5) {
+            ticket.setPrice(0.0);
+            return;
+        }
+
         switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
                 ticket.setPrice(nbHours * Fare.CAR_RATE_PER_HOUR);
