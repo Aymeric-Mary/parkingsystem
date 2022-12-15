@@ -22,6 +22,10 @@ public class FareCalculatorService {
             return;
         }
 
+        if (ticket.isDiscount()) {
+            nbHours = nbHours * 0.95;
+        }
+
         switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
                 ticket.setPrice(nbHours * Fare.CAR_RATE_PER_HOUR);

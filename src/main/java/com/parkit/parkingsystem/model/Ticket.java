@@ -9,6 +9,7 @@ public class Ticket {
     private double price;
     private LocalDateTime inLocalDateTime;
     private LocalDateTime outLocalDateTime;
+    private boolean discount;
 
     public int getId() {
         return id;
@@ -56,5 +57,13 @@ public class Ticket {
 
     public void setOutLocalDateTime(LocalDateTime outLocalDateTime) {
         this.outLocalDateTime = outLocalDateTime;
+    }
+
+    public boolean isDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(boolean discount) {
+        this.discount = discount;
     }
 }

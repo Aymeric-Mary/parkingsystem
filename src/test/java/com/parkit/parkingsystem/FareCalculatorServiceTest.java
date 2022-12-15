@@ -21,6 +21,7 @@ public class FareCalculatorServiceTest {
     private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
 
+
     @BeforeAll
     private static void setUp() {
         fareCalculatorService = new FareCalculatorService();
@@ -144,6 +145,20 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
         assertEquals(0.75, ticket.getPrice());
+    }
+
+    @Test
+    public void calculateFareCarWith5PercentDiscountForRecurrentUser() {
+        LocalDateTime inTime = LocalDateTime.now().minus(1, ChronoUnit.HOURS);
+        LocalDateTime outTime = LocalDateTime.now();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
+
+        ticket.setDiscount(true);
+        ticket.setInLocalDateTime(inTime);
+        ticket.setOutLocalDateTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals((0.95 * Fare.CAR_RATE_PER_HOUR), ticket.getPrice());
     }
 
 }
