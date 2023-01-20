@@ -20,11 +20,11 @@ public class Ticket {
     }
 
     public ParkingSpot getParkingSpot() {
-        return parkingSpot;
+        return new ParkingSpot(parkingSpot);
     }
 
     public void setParkingSpot(ParkingSpot parkingSpot) {
-        this.parkingSpot = parkingSpot;
+        this.parkingSpot = new ParkingSpot(parkingSpot);
     }
 
     public String getVehicleRegNumber() {
